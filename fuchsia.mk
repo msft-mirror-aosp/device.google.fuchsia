@@ -40,6 +40,14 @@ PRODUCT_PACKAGES += \
     libopenjdk \
     okhttp
 
+PRODUCT_HOST_PACKAGES += \
+    art-runtime \
+    tzdata_host \
+    tzdata_host_runtime_apex \
+    tzlookup.xml_host_runtime_apex \
+    tz_version_host \
+    tz_version_host_runtime_apex \
+
 # Fuchsia only has 64-bit support.
 TARGET_SUPPORTS_32_BIT_APPS := false
 TARGET_SUPPORTS_64_BIT_APPS := true
