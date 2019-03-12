@@ -17,11 +17,11 @@
 #ifndef COMPAT_PWD_H
 #define COMPAT_PWD_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include <pwd.h>
+
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
 
 static struct passwd PASSWORD = {
   .pw_name = (char *)"android",
@@ -45,8 +45,6 @@ int getpwuid_r(uid_t uid __UNUSED, passwd* pwd __UNUSED, char *buf __UNUSED,
   return 0;
 }
 
-#ifdef __cplusplus
-}
-#endif
+__END_DECLS
 
 #endif  // COMPAT_PWD_H

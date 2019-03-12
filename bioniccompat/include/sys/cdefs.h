@@ -21,3 +21,7 @@
 #define __BEGIN_DECLS
 #define __END_DECLS
 #endif
+
+#ifndef __UNUSED
+#define __UNUSED __attribute__((__unused__))
+#endif  // __UNUSED

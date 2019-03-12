@@ -18,26 +18,31 @@
 #define SYS_CAPABILITY_H
 
 #include <errno.h>
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
 
 typedef struct __user_cap_header_struct {
-  u_int32_t version;
+  uint32_t version;
   int pid;
 } *cap_user_header_t;
 
 typedef struct __user_cap_data_struct {
-  u_int32_t effective;
-  u_int32_t permitted;
-  u_int32_t inheritable;
+  uint32_t effective;
+  uint32_t permitted;
+  uint32_t inheritable;
 } *cap_user_data_t;
 
-extern "C" inline int capget(cap_user_header_t hdrp, cap_user_data_t datap) {
+inline int capget(cap_user_header_t hdrp, cap_user_data_t datap) {
   datap->effective = datap->permitted = datap->inheritable = 0;
   return 0;
 }
 
-extern "C" inline int capset(cap_user_header_t hdrp, const cap_user_data_t datap) {
+inline int capset(cap_user_header_t hdrp, const cap_user_data_t datap) {
   errno = EPERM;
   return -1;
 }
+
+__END_DECLS
 
 #endif  // SYS_CAPABILITY_H

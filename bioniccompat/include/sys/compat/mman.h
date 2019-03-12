@@ -18,13 +18,18 @@
 #define SYS_COMPAT_MMAN_H
 
 #include "mman.h"
+#include "sys/cdefs.h"
+
+__BEGIN_DECLS
 
 // Fuchsia holds all pages in memory, see http://b/119503290 for more.
-extern "C" inline int mincore(void *addr __UNUSED, size_t length, unsigned char *vec) {
+inline int mincore(void *addr __UNUSED, size_t length, unsigned char *vec) {
   for(size_t i = 0; i < length; i++) {
     vec[i] = 1;
   }
   return 0;
 }
+
+__END_DECLS
 
 #endif  // SYS_COMPAT_MMAN_H
