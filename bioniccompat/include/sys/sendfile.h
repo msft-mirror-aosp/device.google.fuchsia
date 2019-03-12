@@ -17,12 +17,10 @@
 #ifndef SYS_SENDFILE_H
 #define SYS_SENDFILE_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include <sys/cdefs.h>
 #include <sys/types.h>
+
+__BEGIN_DECLS
 
 /*
  * sendfile() here is a relatively straightforward implementation, but
@@ -32,8 +30,6 @@ extern "C" {
  */
 ssize_t sendfile(int out_fd, int in_fd, off_t* offset, size_t count);
 
-#ifdef __cplusplus
-}
-#endif
+__END_DECLS
 
 #endif  // SYS_SENDFILE_H

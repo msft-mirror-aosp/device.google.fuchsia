@@ -19,6 +19,7 @@
 #include <fcntl.h>
 
 #include <errno.h>
+#include <sys/cdefs.h>
 
 /*
  * zircon does not support this operation.

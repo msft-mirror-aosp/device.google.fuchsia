@@ -17,8 +17,11 @@
 #ifndef SYS_COMPAT_TYPES_H
 #define SYS_COMPAT_TYPES_H
 
+#include <sys/cdefs.h>
 #include <threads.h>
 #include <zircon/process.h>
+
+__BEGIN_DECLS
 
 /*
  * Zircon does not define an identifier for thread id. Instead
@@ -28,8 +31,10 @@
  * future. In particular, we should revisit when the Zircon team
  * determines whether or not to implement actual thread IDs.
  */
-extern "C" inline pid_t gettid() {
+inline pid_t gettid() {
   return zx_thread_self();
 }
+
+__END_DECLS
 
 #endif  // SYS_COMPAT_TYPES_H
