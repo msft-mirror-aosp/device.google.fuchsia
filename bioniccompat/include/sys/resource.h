@@ -18,6 +18,10 @@
 #ifndef SYS_RESOURCE_H
 #define SYS_RESOURCE_H
 
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
 typedef unsigned long rlim_t;
 
 #define RLIM_INFINITY ((rlim_t) -1)
@@ -31,7 +35,7 @@ struct rlimit {
  * Fuchsia has no concept of resource limits yet. Tell the system that
  * usage is unlimited (no soft or hard cap).
  */
-extern "C" inline int getrlimit(int resource, struct rlimit *rlim) {
+inline int getrlimit(int resource, struct rlimit *rlim) {
   if (!rlim) {
     errno = EINVAL;
     return -1;
@@ -40,5 +44,7 @@ extern "C" inline int getrlimit(int resource, struct rlimit *rlim) {
   rlim->rlim_max = RLIM_INFINITY;
   return 0;
 }
+
+__END_DECLS
 
 #endif  // SYS_RESOURCE_H

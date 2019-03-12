@@ -17,11 +17,10 @@
 #ifndef SYS_XATTR_H
 #define SYS_XATTR_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include <errno.h>
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
 
 #ifndef ENOATTR
 #define ENOATTR ENODATA
@@ -52,8 +51,6 @@ inline int removexattr(const char *path __UNUSED, const char *name __UNUSED) {
   return -1;
 }
 
-#ifdef __cplusplus
-}
-#endif
+__END_DECLS
 
 #endif  // SYS_XATTR_H
