@@ -18,10 +18,16 @@
 #ifndef BASENAME_H
 #define BASENAME_H
 
-extern "C" inline const char* __gnu_basename(const char* path) {
+#include <sys/cdefs.h>
+
+__BEGIN_DECLS
+
+inline const char* __gnu_basename(const char* path) {
   const char* last_slash = strrchr(path, '/');
   return (last_slash != NULL) ? last_slash + 1 : path;
 }
 #define basename __gnu_basename
+
+__END_DECLS
 
 #endif  // BASENAME_H

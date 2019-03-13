@@ -18,14 +18,19 @@
 #define SYS_PRCTL_H
 
 #include <errno.h>
+#include <sys/cdefs.h>
 
-extern "C" inline int prctl(int option,
-                            unsigned long arg2,
-                            unsigned long arg3,
-                            unsigned long arg4,
-                            unsigned long arg5) {
+__BEGIN_DECLS
+
+inline int prctl(int option,
+                 unsigned long arg2,
+                 unsigned long arg3,
+                 unsigned long arg4,
+                 unsigned long arg5) {
   errno = EINVAL;
   return -1;
 }
+
+__END_DECLS
 
 #endif  // SYS_PRCTL_H
