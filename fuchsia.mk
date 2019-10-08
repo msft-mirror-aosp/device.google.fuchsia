@@ -32,6 +32,7 @@ PRODUCT_PACKAGES += \
     art-runtime \
     bouncycastle \
     conscrypt \
+    core-icu4j \
     core-libart \
     core-oj \
     dalvikvm \
